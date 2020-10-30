@@ -11,4 +11,3 @@ def render(name: str):
 
 render("index.html")
 render("about.html")
-render("contact.html")

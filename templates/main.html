@@ -17,7 +17,7 @@
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column bg">
     <header class="masthead mb-auto">
       <div class="inner">
-        <h3 class="masthead-brand">Amorphous Industries</h3>
+        <h3 class="masthead-brand"><a class="text-decoration-none" href="index.html">Amorphous Industries</a></h3>
         <nav class="nav nav-masthead justify-content-center">
           {% block navbar %}{% endblock %}
         </nav>
@@ -26,7 +26,8 @@
     {% block main %}{% endblock %}
     <footer class="mastfoot mt-auto">
       <div class="inner">
-        <a class="lead" href="https://amorphous-industries.github.io" class="card-link">amorphous-industries.com</a>
+        <a class="card-link text-info" href="https://amorphousindustries.slack.com" class="card-link"><img src="slack_logo.svg" style="width: 100px;"></a>
+        <a class="card-link text-info" href="mailto:info@amorphous-industries.com"><img src="mail_icon.svg" style="width: 40px;"></a>
       </div>
     </footer>
   </div>
