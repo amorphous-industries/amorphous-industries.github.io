@@ -2,10 +2,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Amorphous Industries" currentPage="home">
-  <h1 class="text-4xl font-bold mb-1">Cloud Systems Architecture</h1>
-  <h1 class="text-4xl font-bold mb-4">Mobile Development</h1>
-  <p class="text-xl leading-relaxed">bioinformatics</p>
-  <p class="text-xl leading-relaxed">physics</p>
-  <p class="text-xl leading-relaxed">machine learning</p>
+<BaseLayout title="Amorphous Industries" currentPage="home" showWatermark={true}>
+  <div class="text-center max-w-2xl mx-auto">
+
+    <h1 class="text-6xl font-bold tracking-tight leading-[1.05] mb-4">
+      Cloud Systems<br />
+      <span class="text-white/50 font-light">Architecture</span>
+    </h1>
+
+    <p class="text-2xl font-medium text-white/40 mb-10 tracking-tight">
+      &amp; Mobile Development
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-2">
+      <span class="tag">Bioinformatics</span>
+      <span class="tag">Physics</span>
+      <span class="tag">Machine Learning</span>
+    </div>
+
+  </div>
 </BaseLayout>

@@ -4,9 +4,10 @@ import '../styles/global.css';
 interface Props {
   title: string;
   currentPage: string;
+  showWatermark?: boolean;
 }
 
-const { title, currentPage } = Astro.props;
+const { title, currentPage, showWatermark = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,53 +16,68 @@ const { title, currentPage } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body class="flex min-h-screen bg-[rgb(61,61,51)] text-white text-center
-               [text-shadow:0_.05rem_.1rem_rgba(0,0,0,0.5)]">
-    <div class="bg-cover-gradient flex w-full min-h-screen max-w-[42em] p-3 mx-auto
-                flex-col min-w-[400px]">
+  <body class="bg-[#0b0c10] text-white font-sans antialiased min-h-screen">
+    <div class="bg-site flex flex-col min-h-screen">
 
-      <header class="mb-auto">
-        <div>
-          <h3 class="mb-0 text-xl font-bold">
-            <a class="no-underline text-white hover:text-white" href="/">Amorphous Industries</a>
-          </h3>
-          <nav class="flex justify-center gap-4 mt-2">
-            <a href="/"
-               class:list={[
-                 'py-1 font-bold border-b-4 no-underline transition-colors',
-                 currentPage === 'home'
-                   ? 'text-white border-white'
-                   : 'text-white/50 border-transparent hover:border-white/25'
-               ]}>
-              Home
-            </a>
-            <a href="/about/"
-               class:list={[
-                 'py-1 font-bold border-b-4 no-underline transition-colors',
-                 currentPage === 'about'
-                   ? 'text-white border-white'
-                   : 'text-white/50 border-transparent hover:border-white/25'
-               ]}>
-              About
-            </a>
-          </nav>
+      <!-- Navigation -->
+      <nav class="flex items-center justify-between px-8 py-6 max-w-5xl mx-auto w-full">
+        <a href="/" class="flex items-center gap-2.5 text-white font-semibold text-base tracking-tight no-underline hover:text-white/80 transition-colors">
+          <img
+            src="/logo_no_text.png"
+            alt=""
+            aria-hidden="true"
+            class="h-7 w-auto"
+            style="filter: invert(1) sepia(1) saturate(4) hue-rotate(155deg) brightness(1.15); opacity: 0.85;"
+          />
+          Amorphous Industries
+        </a>
+        <div class="flex items-center gap-6">
+          <a href="/"
+             class:list={[
+               'text-sm font-medium no-underline transition-colors',
+               currentPage === 'home' ? 'text-white' : 'text-white/40 hover:text-white/70'
+             ]}>
+            Home
+          </a>
+          <a href="/about/"
+             class:list={[
+               'text-sm font-medium no-underline transition-colors',
+               currentPage === 'about' ? 'text-white' : 'text-white/40 hover:text-white/70'
+             ]}>
+            About
+          </a>
         </div>
-      </header>
+      </nav>
 
-      <main class="px-6">
-        <slot />
+      <!-- Main content -->
+      <main class="flex-1 flex items-center justify-center px-8 py-12 relative">
+        {showWatermark && (
+          <img
+            src="/logo_no_text.png"
+            alt=""
+            aria-hidden="true"
+            class="logo-watermark"
+          />
+        )}
+        <div class="relative z-10 w-full flex justify-center">
+          <slot />
+        </div>
       </main>
 
-      <footer class="mt-auto text-white/50">
-        <div class="flex justify-center items-center gap-4">
-          <a href="https://amorphousindustries.slack.com">
-            <img src="/slack_logo.svg" class="w-[100px]" alt="Slack" />
-          </a>
-          <a href="mailto:info@amorphous-industries.com">
-            <img src="/mail_icon.svg" class="w-[40px]" alt="Email" />
-          </a>
-        </div>
+      <!-- Footer -->
+      <footer class="flex justify-center items-center gap-5 py-8 max-w-5xl mx-auto w-full">
+        <a href="https://amorphousindustries.slack.com"
+           class="opacity-30 hover:opacity-70 transition-opacity">
+          <img src="/slack_logo.svg" class="h-5" alt="Slack" />
+        </a>
+        <a href="mailto:info@amorphous-industries.com"
+           class="opacity-30 hover:opacity-70 transition-opacity">
+          <img src="/mail_icon.svg" class="h-5" alt="Email" />
+        </a>
       </footer>
 
     </div>
