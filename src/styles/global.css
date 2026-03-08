@@ -2,14 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-cover-gradient {
-  background-image: radial-gradient(
-    closest-side,
-    rgba(155, 155, 155, 0.85),
-    rgba(61, 61, 51, 1)
-  ),
-  url('/logo_no_text.png');
-  background-position: center center;
+/* ── Site background ──────────────────────────────────────── */
+/* Logo watermark visible in the centre; edges fade to near-black */
+.bg-site {
+  background-color: #0b0c10;
+  background-image:
+    radial-gradient(ellipse 52% 52% at 50% 42%,
+      transparent            0%,
+      rgba(11,12,16,0.55)   42%,
+      rgba(11,12,16,0.92)   68%,
+      rgba(11,12,16,1)      100%),
+    url('/logo_no_text.png');
+  background-position: center 38%;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 44% auto;
+}
+
+@media (max-width: 640px) {
+  .bg-site {
+    background-size: 88% auto;
+    background-position: center 30%;
+  }
+}
+
+/* ── Glass card ───────────────────────────────────────────── */
+.glass {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── Specialisation tag ───────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  background: rgba(103,232,249,0.08);
+  border: 1px solid rgba(103,232,249,0.2);
+  color: #67e8f9;
 }

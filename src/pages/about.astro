@@ -2,20 +2,39 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Amorphous Industries" currentPage="about">
-  <div class="flex flex-col sm:flex-row justify-center gap-6 mx-auto">
+<BaseLayout title="About — Amorphous Industries" currentPage="about">
+  <div class="flex flex-col sm:flex-row gap-4 w-full max-w-xl mx-auto">
 
-    <div class="bg-gray-100 text-gray-900 rounded-lg p-6 opacity-80 w-72">
-      <h5 class="text-lg font-semibold">Amorphous Industries</h5>
-      <h6 class="text-sm text-gray-500 mb-2">Organization</h6>
-      <a class="text-cyan-500 hover:text-cyan-400" href="https://github.com/amorphous-industries">GitHub</a>
+    <div class="glass rounded-2xl p-7 flex-1 text-left">
+      <p class="text-[11px] font-semibold text-white/30 uppercase tracking-[0.12em] mb-4">
+        Organization
+      </p>
+      <h2 class="text-lg font-semibold text-white leading-snug mb-5">
+        Amorphous Industries
+      </h2>
+      <a class="text-sm text-cyan-400 hover:text-cyan-300 no-underline font-medium transition-colors"
+         href="https://github.com/amorphous-industries">
+        GitHub →
+      </a>
     </div>
 
-    <div class="bg-gray-100 text-gray-900 rounded-lg p-6 opacity-80 w-72">
-      <h5 class="text-lg font-semibold">Brian Hannafious</h5>
-      <h6 class="text-sm text-gray-500 mb-2">Founder</h6>
-      <a class="text-cyan-500 hover:text-cyan-400" href="https://github.com/xbrianh">GitHub</a>
-      <a class="text-cyan-500 hover:text-cyan-400 ml-3" href="https://www.linkedin.com/in/brian-hannafious-99921734/">LinkedIn</a>
+    <div class="glass rounded-2xl p-7 flex-1 text-left">
+      <p class="text-[11px] font-semibold text-white/30 uppercase tracking-[0.12em] mb-4">
+        Founder
+      </p>
+      <h2 class="text-lg font-semibold text-white leading-snug mb-5">
+        Brian Hannafious
+      </h2>
+      <div class="flex items-center gap-4">
+        <a class="text-sm text-cyan-400 hover:text-cyan-300 no-underline font-medium transition-colors"
+           href="https://github.com/xbrianh">
+          GitHub →
+        </a>
+        <a class="text-sm text-cyan-400 hover:text-cyan-300 no-underline font-medium transition-colors"
+           href="https://www.linkedin.com/in/brian-hannafious-99921734/">
+          LinkedIn →
+        </a>
+      </div>
     </div>
 
   </div>
