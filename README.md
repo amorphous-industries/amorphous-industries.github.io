@@ -23,18 +23,17 @@ Install dependencies (one-time):
 pip install -r requirements-dev.txt
 ```
 
-Edit the templates in `templates/`, then regenerate:
+Changes to `main` require a pull request — create a branch, make changes, and open a PR:
 
 ```bash
+git checkout -b <branch-name>
+# edit templates/, then:
 make
-```
-
-Preview by opening the rendered files in a browser, then commit and push to `main`:
-
-```bash
 git add templates/ index.html about.html
 git commit -m "<description>"
-git push origin main
+git push -u origin <branch-name>
+gh pr create --title "<title>" --body "<description>"
+gh pr merge --merge
 ```
 
-GitHub Pages deploys automatically on push. **Do not edit `index.html` or `about.html` directly** — they are generated outputs and will be overwritten by the next `make` run.
+GitHub Pages deploys automatically when PRs are merged to `main`. **Do not edit `index.html` or `about.html` directly** — they are generated outputs and will be overwritten by the next `make` run.

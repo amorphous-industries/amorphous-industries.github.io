@@ -47,28 +47,48 @@ make clean
 
 ## Development Workflow
 
-1. **Edit templates** in `templates/` — never edit root `index.html` or `about.html` directly.
+All changes to `main` must go through a pull request — direct pushes are blocked by branch protection.
 
-2. **Regenerate output files:**
+1. **Create a feature branch** from `main`:
+   ```bash
+   git checkout main && git pull
+   git checkout -b <branch-name>
+   ```
+
+2. **Edit templates** in `templates/` — never edit root `index.html` or `about.html` directly.
+
+3. **Regenerate output files:**
    ```bash
    make
    ```
 
-3. **Verify locally** by opening the rendered HTML files in a browser:
+4. **Verify locally** by opening the rendered HTML in a browser:
    ```bash
    open index.html
    open about.html
    ```
 
-4. **Commit both templates and generated output** — GitHub Pages needs the rendered HTML in the repo:
+5. **Commit both templates and generated output** — GitHub Pages needs the rendered HTML in the repo:
    ```bash
    git add templates/ index.html about.html
    git commit -m "<description>"
    ```
 
-5. **Push to main** to deploy:
+6. **Push and open a PR:**
    ```bash
-   git push origin main
+   git push -u origin <branch-name>
+   gh pr create --title "<title>" --body "<description>"
+   ```
+
+7. **Merge when ready:**
+   ```bash
+   gh pr merge --merge
+   ```
+
+8. **Clean up:**
+   ```bash
+   git checkout main && git pull
+   git branch -d <branch-name>
    ```
 
 ## Current State Warning
