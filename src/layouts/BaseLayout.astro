@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  currentPage: string;
+}
+
+const { title, currentPage } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+  </head>
+  <body class="flex min-h-screen bg-[rgb(61,61,51)] text-white text-center
+               [text-shadow:0_.05rem_.1rem_rgba(0,0,0,0.5)]">
+    <div class="bg-cover-gradient flex w-full min-h-screen max-w-[42em] p-3 mx-auto
+                flex-col min-w-[400px]">
+
+      <header class="mb-auto">
+        <div>
+          <h3 class="mb-0 text-xl font-bold">
+            <a class="no-underline text-white hover:text-white" href="/">Amorphous Industries</a>
+          </h3>
+          <nav class="flex justify-center gap-4 mt-2">
+            <a href="/"
+               class:list={[
+                 'py-1 font-bold border-b-4 no-underline transition-colors',
+                 currentPage === 'home'
+                   ? 'text-white border-white'
+                   : 'text-white/50 border-transparent hover:border-white/25'
+               ]}>
+              Home
+            </a>
+            <a href="/about/"
+               class:list={[
+                 'py-1 font-bold border-b-4 no-underline transition-colors',
+                 currentPage === 'about'
+                   ? 'text-white border-white'
+                   : 'text-white/50 border-transparent hover:border-white/25'
+               ]}>
+              About
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="px-6">
+        <slot />
+      </main>
+
+      <footer class="mt-auto text-white/50">
+        <div class="flex justify-center items-center gap-4">
+          <a href="https://amorphousindustries.slack.com">
+            <img src="/slack_logo.svg" class="w-[100px]" alt="Slack" />
+          </a>
+          <a href="mailto:info@amorphous-industries.com">
+            <img src="/mail_icon.svg" class="w-[40px]" alt="Email" />
+          </a>
+        </div>
+      </footer>
+
+    </div>
+  </body>
+</html>
