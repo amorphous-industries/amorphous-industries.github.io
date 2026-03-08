@@ -4,9 +4,10 @@ import '../styles/global.css';
 interface Props {
   title: string;
   currentPage: string;
+  showWatermark?: boolean;
 }
 
-const { title, currentPage } = Astro.props;
+const { title, currentPage, showWatermark = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,7 +25,14 @@ const { title, currentPage } = Astro.props;
 
       <!-- Navigation -->
       <nav class="flex items-center justify-between px-8 py-6 max-w-5xl mx-auto w-full">
-        <a href="/" class="text-white font-semibold text-base tracking-tight no-underline hover:text-white/80 transition-colors">
+        <a href="/" class="flex items-center gap-2.5 text-white font-semibold text-base tracking-tight no-underline hover:text-white/80 transition-colors">
+          <img
+            src="/logo_no_text.png"
+            alt=""
+            aria-hidden="true"
+            class="h-7 w-auto"
+            style="filter: invert(1) sepia(1) saturate(4) hue-rotate(155deg) brightness(1.15); opacity: 0.85;"
+          />
           Amorphous Industries
         </a>
         <div class="flex items-center gap-6">
@@ -46,8 +54,18 @@ const { title, currentPage } = Astro.props;
       </nav>
 
       <!-- Main content -->
-      <main class="flex-1 flex items-center justify-center px-8 py-12">
-        <slot />
+      <main class="flex-1 flex items-center justify-center px-8 py-12 relative">
+        {showWatermark && (
+          <img
+            src="/logo_no_text.png"
+            alt=""
+            aria-hidden="true"
+            class="logo-watermark"
+          />
+        )}
+        <div class="relative z-10 w-full flex justify-center">
+          <slot />
+        </div>
       </main>
 
       <!-- Footer -->

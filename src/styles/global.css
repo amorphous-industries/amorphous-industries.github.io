@@ -3,25 +3,30 @@
 @tailwind utilities;
 
 /* ── Site background ──────────────────────────────────────── */
-/* Logo watermark visible in the centre; edges fade to near-black */
 .bg-site {
   background-color: #0b0c10;
-  background-image:
-    radial-gradient(ellipse 52% 52% at 50% 42%,
-      transparent            0%,
-      rgba(11,12,16,0.55)   42%,
-      rgba(11,12,16,0.92)   68%,
-      rgba(11,12,16,1)      100%),
-    url('/logo_no_text.png');
-  background-position: center 38%;
-  background-repeat: no-repeat;
-  background-size: 44% auto;
+}
+
+/* ── Hero watermark (home page only) ─────────────────────── */
+/* invert(1) flips white→black + dark lines→white.            */
+/* mix-blend-mode: screen makes the black areas transparent.  */
+.logo-watermark {
+  position: absolute;
+  width: 62%;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+  filter: invert(1) opacity(0.08);
+  mix-blend-mode: screen;
+  z-index: 0;
 }
 
 @media (max-width: 640px) {
-  .bg-site {
-    background-size: 88% auto;
-    background-position: center 30%;
+  .logo-watermark {
+    width: 90%;
+    top: 36%;
   }
 }
 
